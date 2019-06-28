@@ -157,7 +157,11 @@ fun rookOrBishopThreatens(kingX: Int, kingY: Int,
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int {
+    if (((a+b)>c)&&((c+b)>a)&&((a+c)>b)){
+        return 1
+    } else return -1
+}
 
 /**
  * Средняя
