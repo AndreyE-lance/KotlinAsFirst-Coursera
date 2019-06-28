@@ -34,20 +34,24 @@ class Tests {
     @Test
     @Tag("Easy")
     fun ageDescription() {
+        assertEquals("12 лет", ageDescription(12))
         assertEquals("1 год", ageDescription(1))
         assertEquals("21 год", ageDescription(21))
         assertEquals("132 года", ageDescription(132))
         assertEquals("12 лет", ageDescription(12))
         assertEquals("111 лет", ageDescription(111))
         assertEquals("199 лет", ageDescription(199))
+
     }
 
     @Test
     @Tag("Easy")
     fun timeForHalfWay() {
+        assertEquals(1.2, timeForHalfWay(2.0, 5.0, 1.0, 1.0, 1.0, 1.0), 1e-2)
         assertEquals(2.5, timeForHalfWay(1.0, 5.0, 2.0, 4.0, 3.0, 3.0), 1e-2)
         assertEquals(3.67, timeForHalfWay(4.0, 3.0, 1.0, 4.0, 1.0, 6.0), 1e-2)
         assertEquals(4.4, timeForHalfWay(3.0, 0.0, 1.0, 6.0, 2.0, 5.0), 1e-2)
+        assertEquals(1.0, timeForHalfWay(0.0, 0.0, 0.0, 0.0, 2.0, 5.0), 1e-2)
     }
 
     @Test

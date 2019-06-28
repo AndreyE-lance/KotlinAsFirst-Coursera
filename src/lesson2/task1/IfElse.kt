@@ -1,7 +1,9 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson2.task1
 
 import lesson1.task1.discriminant
+import kotlin.Double.Companion.NaN
 import kotlin.math.max
 import kotlin.math.sqrt
 
@@ -40,19 +42,19 @@ fun gradeNotation(grade: Int): String = when (grade) {
 fun minBiRoot(a: Double, b: Double, c: Double): Double {
     // 1: в главной ветке if выполняется НЕСКОЛЬКО операторов
     if (a == 0.0) {
-        if (b == 0.0) return Double.NaN // ... и ничего больше не делать
+        if (b == 0.0) return NaN // ... и ничего больше не делать
         val bc = -c / b
-        if (bc < 0.0) return Double.NaN // ... и ничего больше не делать
+        if (bc < 0.0) return NaN // ... и ничего больше не делать
         return -sqrt(bc)
         // Дальше функция при a == 0.0 не идёт
     }
     val d = discriminant(a, b, c)   // 2
-    if (d < 0.0) return Double.NaN  // 3
+    if (d < 0.0) return NaN  // 3
     // 4
     val y1 = (-b + sqrt(d)) / (2 * a)
     val y2 = (-b - sqrt(d)) / (2 * a)
     val y3 = max(y1, y2)       // 5
-    if (y3 < 0.0) return Double.NaN // 6
+    if (y3 < 0.0) return NaN // 6
     return -sqrt(y3)           // 7
 }
 
@@ -62,7 +64,18 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String {
+    if ((age / 10) % 10 == 1) {
+        return "$age лет"
+    } else
+        if (age % 10 == 1) {
+            return "$age год"
+        } else
+            if ((age % 10 == 2) or (age % 10 == 3) or (age % 10 == 4)) {
+                return "$age года"
+            } else return "$age лет"
+
+}
 
 /**
  * Простая
@@ -73,7 +86,28 @@ fun ageDescription(age: Int): String = TODO()
  */
 fun timeForHalfWay(t1: Double, v1: Double,
                    t2: Double, v2: Double,
-                   t3: Double, v3: Double): Double = TODO()
+                   t3: Double, v3: Double): Double {
+    var vH = (t1 * v1 + t2 * v2 + t3 * v3) / 2
+    var tRes = 0.00
+    if (vH >= v1 * t1) {
+        tRes += t1
+        vH -= v1 * t1
+
+        if (vH >= v2 * t2) {
+            tRes += t2
+            vH -= v2 * t2
+
+            if (vH >= v3 * t3) {
+                tRes += t3
+                vH -= v3 * t3
+                return tRes
+            } else return tRes + vH / v3
+
+        } else return tRes + vH / v2
+    } else
+        return vH / v1
+
+}
 
 /**
  * Простая
