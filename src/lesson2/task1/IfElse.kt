@@ -4,6 +4,7 @@ package lesson2.task1
 
 import lesson1.task1.discriminant
 import kotlin.Double.Companion.NaN
+import kotlin.math.abs
 import kotlin.math.max
 import kotlin.math.sqrt
 
@@ -121,7 +122,10 @@ fun timeForHalfWay(t1: Double, v1: Double,
 fun whichRookThreatens(kingX: Int, kingY: Int,
                        rookX1: Int, rookY1: Int,
                        rookX2: Int, rookY2: Int): Int {
-//TODO
+    var res=0;
+    if ((kingX==rookX1)or(kingY==rookY1)) res+=1
+    if ((kingX==rookX2)or(kingY==rookY2)) res+=2
+    return res
 }
 
 /**
@@ -136,7 +140,14 @@ fun whichRookThreatens(kingX: Int, kingY: Int,
  */
 fun rookOrBishopThreatens(kingX: Int, kingY: Int,
                           rookX: Int, rookY: Int,
-                          bishopX: Int, bishopY: Int): Int = TODO()
+                          bishopX: Int, bishopY: Int): Int {
+    var res=0;
+    if ((kingX==rookX)or(kingY==rookY)) res+=1
+    if ((kingX!=bishopX)or(kingY!=bishopY)){
+        if (abs(kingX-bishopX)==abs(kingY-bishopY))res+=2
+    }
+    return res
+}
 
 /**
  * Простая
