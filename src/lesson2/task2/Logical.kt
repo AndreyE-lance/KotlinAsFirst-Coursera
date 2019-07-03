@@ -84,7 +84,7 @@ fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
             if((c<=r)&&((b<=s)or(a<=s))) return true
         else {
             if((b<=r)&&((a<=s)or(c<=s))) return true
-                else return false
+                 else return false
         }
     }
 
