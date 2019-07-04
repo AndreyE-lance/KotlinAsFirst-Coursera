@@ -167,7 +167,11 @@ fun maxDivisor(n: Int): Int {
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean{
+    if((isPrime(n) == true) && (isPrime(m) == true)) return true
+    if(evklid(m, n)==1) return true else return false
+
+}
 
 /**
  * Простая
@@ -176,7 +180,9 @@ fun isCoPrime(m: Int, n: Int): Boolean = TODO()
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
-fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
+fun squareBetweenExists(m: Int, n: Int): Boolean {
+    if(sqrt(m.toDouble())-sqrt(n.toDouble())>=1) return true else return false
+}
 
 /**
  * Средняя
