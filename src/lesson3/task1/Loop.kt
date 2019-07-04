@@ -179,16 +179,7 @@ fun isCoPrime(m: Int, n: Int): Boolean{
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
 
-fun main(args: Array<String>) {
-    squareBetweenExists(1, 1)
-    squareBetweenExists(21, 28)
-    squareBetweenExists(36, 48)
-    squareBetweenExists(50, 64)
-    squareBetweenExists(51, 61)
-    squareBetweenExists(999, 1001)
-    squareBetweenExists(152374337, 152423715)
-    squareBetweenExists(2147395601, Int.MAX_VALUE)
-}
+
 
 fun squareBetweenExists(m: Int, n: Int): Boolean {
 
@@ -217,7 +208,27 @@ fun squareBetweenExists(m: Int, n: Int): Boolean {
  * Написать функцию, которая находит, сколько шагов требуется для
  * этого для какого-либо начального X > 0.
  */
-fun collatzSteps(x: Int): Int = TODO()
+fun main(args: Array<String>) {
+    collatzSteps(1)
+    collatzSteps(2)
+    collatzSteps(3)
+    collatzSteps(5)
+}
+fun collatzSteps(x: Int): Int {
+    var i=0
+    var xn=x
+    while (xn!=1) {
+        if (xn % 2 == 0) {
+
+            xn = xn / 2
+        } else {
+            xn = 3 * xn + 1
+        }
+        i++
+    }
+    println(i)
+    return i
+}
 
 /**
  * Средняя
