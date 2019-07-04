@@ -1,6 +1,8 @@
 @file:Suppress("UNUSED_PARAMETER")
+
 package lesson3.task1
 
+import kotlin.math.abs
 import kotlin.math.sqrt
 
 /**
@@ -38,7 +40,7 @@ fun isPrime(n: Int): Boolean {
  */
 fun isPerfect(n: Int): Boolean {
     var sum = 1
-    for (m in 2..n/2) {
+    for (m in 2..n / 2) {
         if (n % m > 0) continue
         sum += m
         if (sum > n) break
@@ -66,7 +68,11 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = TODO()
+fun digitNumber(n: Int): Int =
+        when {
+            n < 10 -> 1
+            else -> digitNumber(n / 10) + digitNumber(n % 10)
+        }
 
 /**
  * Простая
@@ -74,7 +80,40 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int {
+    // if (n == 0) return 0
+    // if ((n == 1)or(n==2)) return 1
+
+    // return fib(n-2) + fib(n-1)
+    if (n <= 2) return 1
+    var res = 0
+    var a = 1
+    var b = 1
+    val i = 2
+    for (i in i..n - 1) {
+        res = a + b;
+        a = b;
+        b = res;
+    }
+    return res;
+}
+
+fun main(args: Array<String>) {
+    println(fib(47))
+}
+
+fun evklid(a: Int, b: Int): Int {
+    var a1=abs(a)
+    var b1=abs(b)
+    while (a1 != b1) {
+        if (a1 > b1) {
+            a1 -= b1
+        } else {
+            b1 -= a1
+        }
+    }
+    return a1
+}
 
 /**
  * Простая
@@ -82,7 +121,11 @@ fun fib(n: Int): Int = TODO()
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int {
+    if (m == n) return m
+    if ((isPrime(n) == true) && (isPrime(m) == true)) return m * n else return (m*n)/ evklid(m,n)
+
+}
 
 /**
  * Простая
