@@ -2,8 +2,9 @@
 
 package lesson3.task1
 
-import kotlin.math.abs
-import kotlin.math.sqrt
+
+import kotlin.math.*
+import kotlin.Double
 
 /**
  * Пример
@@ -103,8 +104,8 @@ fun main(args: Array<String>) {
 }
 
 fun evklid(a: Int, b: Int): Int {
-    var a1=abs(a)
-    var b1=abs(b)
+    var a1 = abs(a)
+    var b1 = abs(b)
     while (a1 != b1) {
         if (a1 > b1) {
             a1 -= b1
@@ -123,7 +124,7 @@ fun evklid(a: Int, b: Int): Int {
  */
 fun lcm(m: Int, n: Int): Int {
     if (m == n) return m
-    if ((isPrime(n) == true) && (isPrime(m) == true)) return m * n else return (m*n)/ evklid(m,n)
+    if ((isPrime(n) == true) && (isPrime(m) == true)) return m * n else return (m * n) / evklid(m, n)
 
 }
 
@@ -132,7 +133,16 @@ fun lcm(m: Int, n: Int): Int {
  *
  * Для заданного числа n > 1 найти минимальный делитель, превышающий 1
  */
-fun minDivisor(n: Int): Int = TODO()
+fun minDivisor(n: Int): Int {
+    var num = n
+    var i = 1
+    if(isPrime(n) == true) return n
+    while (i <= round(sqrt(n.toDouble()))) {
+        i = i + 1
+        if (n % i == 0) break
+    }
+    return i
+}
 
 /**
  * Простая
