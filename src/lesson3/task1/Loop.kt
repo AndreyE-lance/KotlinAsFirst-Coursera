@@ -99,9 +99,7 @@ fun fib(n: Int): Int {
     return res;
 }
 
-fun main(args: Array<String>) {
-    println(fib(47))
-}
+
 
 fun evklid(a: Int, b: Int): Int {
     var a1 = abs(a)
@@ -180,8 +178,27 @@ fun isCoPrime(m: Int, n: Int): Boolean{
  * то есть, существует ли такое целое k, что m <= k*k <= n.
  * Например, для интервала 21..28 21 <= 5*5 <= 28, а для интервала 51..61 квадрата не существует.
  */
+
+fun main(args: Array<String>) {
+    squareBetweenExists(1, 1)
+    squareBetweenExists(21, 28)
+    squareBetweenExists(36, 48)
+    squareBetweenExists(50, 64)
+    squareBetweenExists(51, 61)
+    squareBetweenExists(999, 1001)
+    squareBetweenExists(152374337, 152423715)
+    squareBetweenExists(2147395601, Int.MAX_VALUE)
+}
+
 fun squareBetweenExists(m: Int, n: Int): Boolean {
-    if(sqrt(m.toDouble())-sqrt(n.toDouble())>=1) return true else return false
+
+    var i = m
+    while (i<=n){
+        if (sqrt(i.toDouble())%1==0.00) return true
+        i++
+        if(i<0)break
+    }
+    return false
 }
 
 /**
