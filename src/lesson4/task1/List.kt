@@ -2,8 +2,11 @@
 
 package lesson4.task1
 
+import jdk.nashorn.internal.objects.NativeString.length
 import lesson1.task1.discriminant
+import sun.security.pkcs11.wrapper.CK_C_INITIALIZE_ARGS
 import kotlin.math.sqrt
+
 
 /**
  * Пример
@@ -239,4 +242,29 @@ fun roman(n: Int): String = TODO()
  * Например, 375 = "триста семьдесят пять",
  * 23964 = "двадцать три тысячи девятьсот шестьдесят четыре"
  */
-fun russian(n: Int): String = TODO()
+fun main(args: Array<String>){
+    println(russian (112))
+}
+
+fun conv(s:String,p:Boolean) : String{
+    var res=""
+    val sl=s.length
+    val ed:Array<String> = arrayOf("один","два","три","четыре","пять","шесть","семь","восемь","девять")
+    val ded:Array<String> = arrayOf("одинадцать","двенадцать","тринадцать","четырнадцать","пятнадцать","шеснадцать","семнадцать","восемнадцать","девятнадцать")
+    val dec:Array<String> = arrayOf("десять","двадцать","тридцать","сорок","пятьдесят","шестьдесят","семьдесят","восемьдесят","девяносто")
+
+    if (p==true) res="" else {
+        if ((s[2] == '1')&&(s[1] != '1')) res += " одна тысяча"
+        else {
+            if ((s[2] == '2')&&(s[1] != '1')) res=" две тысячи" else{
+                            if (((s[2] == '3') or (s[2] == '4'))&&(s[1] != '1')&&(s[1] != '1')) res += " тысячи" else res += " тысяч"}
+        }
+    }
+
+    return res
+}
+fun russian(n: Int): String {
+    var s = "$n"
+
+    return conv(s,false)
+}
